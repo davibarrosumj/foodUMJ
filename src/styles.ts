@@ -149,10 +149,4 @@ export const styles = StyleSheet.create({
     color: '#d9534f',
     textAlign: 'center',
   },
-  hint: {
-    fontSize: 12,
-    color: '#6c757d',
-    textAlign: 'center',
-    lineHeight: 18,
-  },
 });

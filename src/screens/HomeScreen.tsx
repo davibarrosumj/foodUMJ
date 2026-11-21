@@ -7,8 +7,12 @@ import { styles } from '../styles';
 export function HomeScreen({ onSearch, onOpenFavorites }) {
   const [query, setQuery] = useState('');
   const { favorites } = useFavorites();
+  const hasQuery = query.trim().length > 0;
 
   function handleSearchPress() {
+    if (!hasQuery) {
+      return;
+    }
     onSearch(query);
   }
 
@@ -20,7 +24,7 @@ export function HomeScreen({ onSearch, onOpenFavorites }) {
 
       <TextInput
         style={styles.input}
-        placeholder="Digite o nome da receita ou ingrediente..."
+        placeholder="Digite o nome da receita..."
         value={query}
         onChangeText={setQuery}
         onSubmitEditing={handleSearchPress}
@@ -28,17 +32,17 @@ export function HomeScreen({ onSearch, onOpenFavorites }) {
       />
 
       <View style={styles.actions}>
-        <Button title="Pesquisar" color="#d9534f" onPress={handleSearchPress} />
+        <Button
+          title="Pesquisar"
+          color="#d9534f"
+          disabled={!hasQuery}
+          onPress={handleSearchPress}
+        />
         <Button
           title={`Meus Favoritos (${favorites.length})`}
           onPress={onOpenFavorites}
         />
       </View>
-
-      <Text style={styles.hint}>
-        Dica: pesquise em branco para ver todas as receitas ou digite "erro" para testar o
-        tratamento de erro.
-      </Text>
     </View>
   );
 }
