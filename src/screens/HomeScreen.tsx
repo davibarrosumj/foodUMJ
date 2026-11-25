@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Image, Pressable, Text, TextInput, View } from 'react-native';
 import { useFavorites } from '../context/FavoritesContext';
 import { styles } from '../styles';
 
@@ -18,7 +17,7 @@ export function HomeScreen({ onSearch, onOpenFavorites }) {
 
   return (
     <View style={styles.homeContainer}>
-      <Ionicons name="restaurant" size={56} color="#d9534f" style={styles.logo} />
+      <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
       <Text style={styles.title}>FoodUMJ: Receitas</Text>
       <Text style={styles.subtitle}>Encontre receitas simples e salve suas favoritas</Text>
 
@@ -32,16 +31,19 @@ export function HomeScreen({ onSearch, onOpenFavorites }) {
       />
 
       <View style={styles.actions}>
-        <Button
-          title="Pesquisar"
-          color="#d9534f"
+        <Pressable
+          style={[styles.button, !hasQuery && styles.buttonDisabled]}
           disabled={!hasQuery}
           onPress={handleSearchPress}
-        />
-        <Button
-          title={`Meus Favoritos (${favorites.length})`}
+        >
+          <Text style={styles.buttonText}>Pesquisar</Text>
+        </Pressable>
+        <Pressable
+          style={[styles.button, styles.buttonSecondary]}
           onPress={onOpenFavorites}
-        />
+        >
+          <Text style={styles.buttonText}>{`Meus Favoritos (${favorites.length})`}</Text>
+        </Pressable>
       </View>
     </View>
   );

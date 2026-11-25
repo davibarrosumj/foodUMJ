@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#faf8f8ff',
   },
   header: {
     flexDirection: 'row',
@@ -75,9 +75,28 @@ export const styles = StyleSheet.create({
     gap: 10,
     marginBottom: 16,
   },
+  button: {
+    backgroundColor: '#d9534f',
+    paddingVertical: 12,
+    borderRadius: 12,
+    alignItems: 'center',
+  },
+  buttonSecondary: {
+    backgroundColor: '#6c757d',
+  },
+  buttonDisabled: {
+    opacity: 0.5,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
   logo: {
     alignSelf: 'center',
     marginBottom: 12,
+    width: 120,
+    height: 120,
   },
   thumbnail: {
     width: 60,
